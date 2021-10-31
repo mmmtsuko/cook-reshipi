@@ -21,8 +21,6 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
-    @comment = Comment.new
-    @comments = @dish.comments.includes(:user)
   end
 
   def edit

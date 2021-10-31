@@ -1,0 +1,66 @@
+﻿<main class="main">
+  <div class="inner">
+    <div class="dish__wrapper">
+      <p class="dish__hedding">
+        <%= @dish.title %>
+      </p>
+     
+      <div class="dish__image">
+      <%= image_tag @dish.image %>
+      </div>
+      <div class="dish__body">
+        <div class="dish__detail">
+          <p class="detail__title">カテゴリー</p>
+          <p class="detail__message">
+            <%= @dish.category %>
+          </p>
+        </div>
+        <div class="desh__detail">
+          <p class="detail__title">材料</p>
+          <p class="detail__message">
+            <%= @dish.material %>
+          </p>
+        </div>
+        <div class="desh__detail">
+          <p class="detail__title">作り方</p>
+          <p class="detail__message">
+            <a class="nonber">1.<%= @dish.one %></a>
+            <a class="nonber">2.<%= @dish.two %></a>
+            <a class="nonber">3.<%= @dish.three %></a>
+          </p>
+        </div>
+      </div>
+
+       <%= link_to "投稿者 #{@dish.user.nickname}", user_path(@dish.user), class: :dish__user %>
+       <% if current_user == @dish.user %>
+        <div class="dish__manage">
+          <%= link_to "編集する", edit_dish_path(@dish), class: :dish__btn %>
+          <%= link_to "削除する", dish_path(@dish), method: :delete, class: :dish__btn %>
+        </div>
+      <% end %>
+
+      <div class="dish__comments">
+      <% if user_signed_in? %>
+        <%= form_with model: [@dish],local: true do |f|%>
+            <div class="field">
+               <%#= f.label :text, "コメント" %><br />
+               <%#= f.text_field :text, id:"comment_content" %>
+        <% end %>
+            </div>
+            <div class="actions">
+               <%#= f.submit "送信する", class: :form__btn  %>
+            </div>
+           <% end %>
+       
+        <ul class="comments_lists">
+           <%# @dish.each do |dish| %>
+            <li class="comments_list">
+            <%#= comment.text %>
+            <%#= link_to "（#{comments.user.nickname}）", user_path(comment.user), class: :comment_user %>
+            </li>
+        <%# end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>

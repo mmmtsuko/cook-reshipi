@@ -7,7 +7,7 @@ class CreateDishes < ActiveRecord::Migration[6.0]
       t.text         :one,            null: false
       t.text         :two,            null: false
       t.text         :three,          null: false
-      #t.references   :user,           null: false, foreign_key: true
+      t.references   :user,           null: false
       t.timestamps
     end
   end
