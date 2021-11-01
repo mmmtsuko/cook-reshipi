@@ -20,7 +20,7 @@
 
 
 #  URL 	
-https://cookreshipi.herokuapp.com/
+https://cook-reshipi.herokuapp.com
 
 
 # テスト用アカウント	
